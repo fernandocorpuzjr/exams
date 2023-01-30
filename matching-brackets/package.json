@@ -1,0 +1,16 @@
+{
+  "name": "matching-brackets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npx jasmine spec/*spec.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^4.5.0"
+  },
+  "type": "module"
+}
