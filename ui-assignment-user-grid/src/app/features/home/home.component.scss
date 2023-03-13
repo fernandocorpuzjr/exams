@@ -6,3 +6,18 @@
 .grid-container {
   border: solid 1px #59718a;
 }
+
+.modal:not(.with-footer) {
+  .modal-card-body {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}
+
+.to-delete-users {
+  margin-top: 10px;
+  font-weight: bold;
+  span {
+    margin-right: 10px;
+  }
+}
