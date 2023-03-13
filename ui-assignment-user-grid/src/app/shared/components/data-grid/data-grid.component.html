@@ -1,0 +1,51 @@
+<table class="table">
+  <thead>
+    <th>
+      <input
+        *ngIf="data?.length"
+        type="checkbox"
+        name="isAllSelected"
+        [(ngModel)]="isAllSelected"
+        (change)="toggleAllSelection()"
+      />
+    </th>
+    <th *ngFor="let header of headers">
+      <span
+        class="header-cell"
+        [class.sortable]="header.sortable"
+        (click)="toggleSort(header)"
+      >
+        <span>{{ header.title }}</span>
+        <i
+          *ngIf="header.sortable && header.sortDirection"
+          class="fas"
+          [class.fa-arrow-up]="
+            header.sortDirection === sortDirectionRef.Ascending
+          "
+          [class.fa-arrow-down]="
+            header.sortDirection === sortDirectionRef.Descending
+          "
+        ></i>
+      </span>
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data; let index = index">
+      <td class="cell-selector">
+        <input
+          type="checkbox"
+          [name]="'select' + index"
+          [(ngModel)]="row.selected"
+          [value]="index"
+          (change)="handleSelection()"
+        />
+      </td>
+      <td *ngFor="let header of headers">
+        <app-data-grid-cell [row]="row" [key]="header.key"></app-data-grid-cell>
+      </td>
+    </tr>
+    <tr *ngIf="!data?.length">
+      <td [colSpan]="headers.length + 1" class="no-records-cell">No records found.</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,25 @@
+.header-cell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.sortable {
+    cursor: pointer;
+    i {
+      margin-left: 8px;
+      font-size: 0.75rem;
+      color: #757575;
+    }
+  }
+}
+
+table {
+  width: 100%;
+}
+
+
+.no-records-cell {
+  text-align: center;
+  color: #757575;
+  padding: 20px;
+}

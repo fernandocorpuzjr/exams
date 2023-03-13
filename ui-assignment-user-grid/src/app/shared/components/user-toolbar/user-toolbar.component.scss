@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #414d5b;
+  border-bottom: solid 1px #59718a;
+
+  .search-wrap {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    input {
+      background-color: transparent;
+      color: #ffffff;
+      &::placeholder {
+        color: #999999;
+      }
+    }
+    button {
+      position: absolute;
+      right: 0;
+      background-color: transparent;
+      color: #ffffff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  }
+}

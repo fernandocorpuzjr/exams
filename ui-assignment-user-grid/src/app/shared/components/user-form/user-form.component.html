@@ -1,0 +1,90 @@
+<form *ngIf="form" [formGroup]="form">
+  <div class="form-field">
+    <label class="form-field-label" for="userId"
+      >User ID <span class="required">*</span></label
+    >
+    <div class="form-field-control">
+      <input
+        id="userId"
+        type="text"
+        class="input"
+        [class.is-danger]="userId.touched && !userId.valid"
+        [class.is-readonly]="!!model"
+        [readonly]="!!model"
+        formControlName="userId"
+        name="userId"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-field">
+    <label class="form-field-label" for="firstName"
+      >First Name <span class="required">*</span></label
+    >
+    <div class="form-field-control">
+      <input
+        id="firstName"
+        type="text"
+        class="input"
+        [class.is-danger]="firstName.touched && !firstName.valid"
+        formControlName="firstName"
+        name="firstName"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-field">
+    <label class="form-field-label" for="lastName"
+      >Last Name <span class="required">*</span></label
+    >
+    <div class="form-field-control">
+      <input
+        id="lastName"
+        type="text"
+        class="input"
+        [class.is-danger]="lastName.touched && !lastName.valid"
+        formControlName="lastName"
+        name="lastName"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-field">
+    <label class="form-field-label" for="email"
+      >Email <span class="required">*</span></label
+    >
+    <div class="form-field-control">
+      <input
+        id="email"
+        type="text"
+        class="input"
+        [class.is-danger]="email.touched && !email.valid"
+        formControlName="email"
+        name="email"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-field">
+    <label class="form-field-label" for="status"
+      >Status <span class="required">*</span></label
+    >
+    <div class="form-field-control select">
+      <select
+        id="status"
+        formControlName="status"
+        name="status"
+        [class.is-danger]="status.touched && !status.valid"
+      >
+        <option [value]="userStatusRef.Initiated">Initiated</option>
+        <option [value]="userStatusRef.Registered">Registered</option>
+      </select>
+    </div>
+  </div>
+</form>
+<div class="form-actions">
+  <button type="button" class="button" (click)="onClose.emit()">Cancel</button>
+  <button type="button" class="button is-info" (click)="handleSave()">
+    {{ model ? 'Save Changes' : 'Create User'}}
+  </button>
+</div>

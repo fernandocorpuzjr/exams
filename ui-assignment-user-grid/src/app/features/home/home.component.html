@@ -1,0 +1,92 @@
+<app-user-toolbar
+  [isEditEnabled]="selectedIds.length === 1"
+  [isDeleteEnabled]="selectedIds.length > 0"
+  (onNew)="handleAddUser()"
+  (onEdit)="handleEditUser()"
+  (onDelete)="handleDeleteUser()"
+  (onReload)="handleReload()"
+  (onSearch)="handleUserSearch($event)"
+></app-user-toolbar>
+
+<div class="grid-container">
+  <app-data-grid
+    [headers]="headers"
+    [data]="data"
+    (onSelectionChange)="handleSelection($event)"
+  ></app-data-grid>
+</div>
+
+<div *ngIf="isAddModalVisible" class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add User</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="isAddModalVisible = false"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <app-user-form
+        (onClose)="isAddModalVisible = false"
+        (onSave)="handleNewUserSave($event)"
+      ></app-user-form>
+    </section>
+  </div>
+</div>
+
+<div *ngIf="userToEdit && isEditModalVisible" class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Edit User</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="isEditModalVisible = false"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <app-user-form
+        [model]="userToEdit"
+        (onClose)="isEditModalVisible = false"
+        (onSave)="handleEditUserSave($event)"
+      ></app-user-form>
+    </section>
+  </div>
+</div>
+
+<div
+  *ngIf="selectedIds.length && isDeleteModalVisible"
+  class="modal is-active with-footer"
+>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Delete User</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="isDeleteModalVisible = false"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <p>
+        Are you sure you want to delete this user{{
+          selectedIds.length > 1 ? "s" : ""
+        }}
+        ?
+      </p>
+      <p class="to-delete-users">
+        <span *ngFor="let id of selectedIds">{{ id }}</span>
+      </p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" (click)="proceedDelete()">Yes</button>
+      <button class="button" (click)="isDeleteModalVisible = false">No</button>
+    </footer>
+  </div>
+</div>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.2)"></ngx-spinner>

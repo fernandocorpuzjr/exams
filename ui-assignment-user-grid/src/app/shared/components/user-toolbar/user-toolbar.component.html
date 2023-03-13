@@ -1,0 +1,51 @@
+<button
+  type="button"
+  class="button is-outlined is-white"
+  title="Add User"
+  (click)="onNew.emit()"
+>
+  <i class="fas fa-user-plus"></i>
+</button>
+<button
+  type="button"
+  class="button is-outlined is-white"
+  title="Edit User"
+  [disabled]="!isEditEnabled"
+  (click)="onEdit.emit()"
+>
+  <i class="fas fa-user-edit"></i>
+</button>
+<button
+  type="button"
+  class="button is-outlined is-white"
+  title="Delete User"
+  [disabled]="!isDeleteEnabled"
+  (click)="onDelete.emit()"
+>
+  <i class="fas fa-user-times"></i>
+</button>
+<button
+  type="button"
+  class="button is-outlined is-white"
+  title="Refresh"
+  (click)="onReload.emit()"
+>
+  <i class="fas fa-sync"></i>
+</button>
+<div class="search-wrap">
+  <input
+    type="text"
+    class="input"
+    [(ngModel)]="searchString"
+    placeholder="Grid Filter"
+    (input)="handleSearchInput()"
+  />
+  <button
+    *ngIf="searchString"
+    type="button"
+    title="Clear"
+    (click)="clearSearch()"
+  >
+    <i class="fas fa-times"></i>
+  </button>
+</div>

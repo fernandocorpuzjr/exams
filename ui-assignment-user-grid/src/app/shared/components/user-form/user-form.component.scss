@@ -1,0 +1,32 @@
+.form-field {
+  display: flex;
+  margin-bottom: 20px;
+  label.form-field-label {
+    width: 30%;
+    flex-shrink: 0;
+  }
+  .form-field-control {
+    flex-grow: 1;
+
+    input,
+    select {
+      width: 100%;
+    }
+  }
+  .required {
+    color: red;
+  }
+}
+
+.input {
+  &.is-readonly {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
